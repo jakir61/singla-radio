@@ -12,7 +12,7 @@ val signingProps = Properties().apply {
 
 android {
     namespace = "app.bikriflow.mobile"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "app.bikriflow.mobile"
