@@ -55,7 +55,7 @@ class AppDatabase(context: Context) : SQLiteOpenHelper(context, "bikriflow.db", 
                     put("quantity", i.quantity); put("sale_price", i.salePrice); put("unit_cost", i.unitCost)
                 }
                 db.insertOrThrow("order_items", null, iv)
-                i.productId?.let { db.execSQL("UPDATE products SET stock=MAX(0,stock-?) WHERE id=?", arrayOf(i.quantity, it)) }
+                i.productId?.let { db.execSQL("UPDATE products SET stock=MAX(0,stock-?) WHERE id=?", arrayOf<Any>(i.quantity, it)) }
             }
             db.setTransactionSuccessful()
             return id
