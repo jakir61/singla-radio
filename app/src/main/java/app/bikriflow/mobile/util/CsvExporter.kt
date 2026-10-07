@@ -15,7 +15,10 @@ object CsvExporter {
         val file = File(dir, "bikriflow-orders-" + System.currentTimeMillis() + ".csv")
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
-        fun quote(value: String): String = """ + value.replace(""", """") + """
+        fun quote(value: String): String {
+            val dq = 34.toChar().toString()
+            return dq + value.replace(dq, dq + dq) + dq
+        }
 
         file.bufferedWriter().use { writer ->
             writer.appendLine("Order,Date,Customer,Phone,Channel,Status,Revenue,Cost,Profit,Due")
